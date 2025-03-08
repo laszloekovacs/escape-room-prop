@@ -23,12 +23,17 @@ export class StartScreen extends Screen {
 		term.move(0, 5)
 		term.gray(centeredLine1)
 		term.gray(centeredLine2)
+		term.nextLine(1)
+		term.move(term.width / 2, 0)
 
-		// wait for input, then transition to the next screen
+		// wait for input
 		await new Promise(res => {
 			term.on('key', res)
 		})
 
-		term('ok')
+		term('csatlakozás...')
+
+		// transition to the next screen
+		this.manager.setScreen(new StartScreen(this.manager))
 	}
 }

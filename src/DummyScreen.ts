@@ -1,7 +1,6 @@
-import * as termkit from 'terminal-kit'
-import { Screen } from './Screen'
 import { ScreenManager } from './ScreenManager'
-const term = termkit.terminal
+import { Screen } from './Screen'
+import term from './tk'
 
 export class DummyScreen extends Screen {
 	constructor(manager: ScreenManager) {

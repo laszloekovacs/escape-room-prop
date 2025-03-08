@@ -1,5 +1,4 @@
 import { Screen } from './Screen'
-import { DummyScreen } from './DummyScreen'
 import { StartScreen } from './StartScreen'
 import term from './tk'
 
@@ -12,11 +11,15 @@ export class ScreenManager extends EventTarget {
 
 		term.fullscreen(true)
 		term.grabInput({ safe: true })
+
+		this.addEventListener('exit', () => {
+			this.exit()
+		})
 	}
 
 	public async run() {
 		term.clear()
-		await this.screen.render()
+		this.screen.render()
 	}
 
 	public setScreen(screen: Screen) {

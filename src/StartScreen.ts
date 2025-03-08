@@ -1,3 +1,4 @@
+import { BootScreen } from './BootScreen'
 import { Screen } from './Screen'
 import { ScreenManager } from './ScreenManager'
 import term from './tk'
@@ -34,6 +35,6 @@ export class StartScreen extends Screen {
 		term('csatlakozás...')
 
 		// transition to the next screen
-		this.manager.setScreen(new StartScreen(this.manager))
+		this.manager.setScreen(new BootScreen(this.manager))
 	}
 }

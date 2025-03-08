@@ -1,8 +1,9 @@
 import { Screen } from './Screen'
+import type { ScreenManager } from './ScreenManager'
 
 export class DummyScreen extends Screen {
-	constructor() {
-		super()
+	constructor(manager: ScreenManager) {
+		super(manager)
 	}
 
 	render(): void {

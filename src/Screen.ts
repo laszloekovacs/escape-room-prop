@@ -1,5 +1,11 @@
+import type { ScreenManager } from './ScreenManager'
+
 export abstract class Screen {
-	constructor() {}
+	private manager: ScreenManager
+
+	constructor(manager: ScreenManager) {
+		this.manager = manager
+	}
 
 	abstract render(): void
 

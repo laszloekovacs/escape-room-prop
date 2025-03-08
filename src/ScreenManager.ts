@@ -1,4 +1,4 @@
-import type { Screen } from './Screen'
+import { Screen } from './Screen'
 import readline from 'node:readline'
 
 export class ScreenManager {
@@ -16,9 +16,13 @@ export class ScreenManager {
 		})
 	}
 
-	public static getInstance(initialScreen: Screen): ScreenManager {
+	public static getInstance<T extends Screen>(
+		initialScreen: new (manager: ScreenManager) => T
+	): ScreenManager {
 		if (!ScreenManager.instance) {
-			ScreenManager.instance = new ScreenManager(initialScreen)
+			ScreenManager.instance = new ScreenManager(
+				new initialScreen(ScreenManager.instance)
+			)
 		}
 		return ScreenManager.instance
 	}

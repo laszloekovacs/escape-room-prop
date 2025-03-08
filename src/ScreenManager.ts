@@ -1,19 +1,25 @@
 import type { Screen } from './Screen'
 
 export class ScreenManager {
-	screen: Screen
+	private static instance: ScreenManager
+	private screen: Screen
 
-	constructor(initialScreen) {
+	private constructor(initialScreen: Screen) {
 		this.screen = initialScreen
 	}
 
-	render() {
+	public static getInstance(initialScreen: Screen): ScreenManager {
+		if (!ScreenManager.instance) {
+			ScreenManager.instance = new ScreenManager(initialScreen)
+		}
+		return ScreenManager.instance
+	}
+
+	public run() {
 		this.screen.render()
 	}
 
-	setScreen(screen) {
+	public setScreen(screen: Screen) {
 		this.screen = screen
 	}
-
-	run() {}
 }

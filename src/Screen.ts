@@ -1,7 +1,7 @@
-export class Screen {
+export abstract class Screen {
 	constructor() {}
 
-	render() {}
+	abstract render(): void
 
-	update() {}
+	abstract update(): void
 }

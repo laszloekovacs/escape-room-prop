@@ -1,16 +1,15 @@
+import * as termkit from 'terminal-kit'
 import { Screen } from './Screen'
-import type { ScreenManager } from './ScreenManager'
+const term = termkit.terminal
 
 export class DummyScreen extends Screen {
 	constructor() {
 		super()
 	}
 
-	render(): void {
-		console.log('Dummy Screen Render')
-	}
-
-	update(): void {
-		console.log('Dummy Screen Update')
+	async render() {
+		term.green('Enter Your name: ')
+		const name = await term.inputField().promise
+		term.red('\n' + name)
 	}
 }

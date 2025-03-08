@@ -3,10 +3,11 @@ import { DummyScreen } from './DummyScreen'
 import { StartScreen } from './StartScreen'
 import term from './tk'
 
-export class ScreenManager {
+export class ScreenManager extends EventTarget {
 	private screen: Screen
 
 	public constructor() {
+		super()
 		this.screen = new StartScreen(this)
 
 		term.fullscreen(true)

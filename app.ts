@@ -2,4 +2,4 @@ import { ScreenManager } from './src/ScreenManager'
 
 const manager = new ScreenManager()
 
-manager.run()
+manager.start()

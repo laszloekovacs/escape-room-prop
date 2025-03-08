@@ -4,7 +4,8 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"start": "bun app.js"
+		"start": "bun app.ts",
+		"evl": "bun evl.ts"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

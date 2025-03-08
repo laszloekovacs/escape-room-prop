@@ -7,9 +7,13 @@ export class BootScreen extends Screen {
 		super(manager)
 	}
 
-	async render() {
-		term.slowTyping('memória ellenörzés...\n')
-		term.slowTyping('csatlakozás hálózathoz...\n')
-		term.slowTyping('a Kremlin értesítése...\n')
+	render() {
+		term
+			.slowTyping(
+				'memória ellenörzés...\ncsatlakozás hálózathoz...\na Kremlin értesítése...\n'
+			)
+			.then(() => {
+				term.green('ok')
+			})
 	}
 }

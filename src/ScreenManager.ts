@@ -15,4 +15,8 @@ export class ScreenManager {
 	public setScreen(screen: Screen) {
 		this.screen = screen
 	}
+
+	public exit() {
+		process.exit(0)
+	}
 }

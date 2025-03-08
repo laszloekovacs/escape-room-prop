@@ -9,8 +9,12 @@ export class DummyScreen extends Screen {
 	}
 
 	async render() {
-		term.green('Enter Your name: ')
-		const name = await term.inputField().promise
-		term.red('\n' + name)
+		let name: string | undefined = ''
+
+		while (name != 'exit') {
+			term.green('\nEnter Your name: ')
+			name = await term.inputField().promise
+			term.red('\n' + name)
+		}
 	}
 }

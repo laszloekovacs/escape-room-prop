@@ -1,14 +1,20 @@
 import { Screen } from './Screen'
 import { DummyScreen } from './DummyScreen'
+import { StartScreen } from './StartScreen'
+import term from './tk'
 
 export class ScreenManager {
 	private screen: Screen
 
 	public constructor() {
-		this.screen = new DummyScreen(this)
+		this.screen = new StartScreen(this)
+
+		term.fullscreen(true)
+		term.grabInput({ safe: true })
 	}
 
 	public async run() {
+		term.clear()
 		await this.screen.render()
 	}
 
@@ -17,6 +23,6 @@ export class ScreenManager {
 	}
 
 	public exit() {
-		process.exit(0)
+		term.processExit(0)
 	}
 }

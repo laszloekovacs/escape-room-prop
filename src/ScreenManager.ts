@@ -1,18 +1,11 @@
 import { Screen } from './Screen'
+import { DummyScreen } from './DummyScreen'
 
 export class ScreenManager {
-	private static instance: ScreenManager
 	private screen: Screen
 
-	private constructor(initialScreen: Screen) {
-		this.screen = initialScreen
-	}
-
-	public static getInstance(initialScreen: Screen): ScreenManager {
-		if (!ScreenManager.instance) {
-			ScreenManager.instance = new ScreenManager(initialScreen)
-		}
-		return ScreenManager.instance
+	public constructor() {
+		this.screen = new DummyScreen(this)
 	}
 
 	public async run() {

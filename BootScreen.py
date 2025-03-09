@@ -1,5 +1,6 @@
 from blessed import Terminal
 from Screen import Screen
+from MainScreen import MainScreen
 import time
 
 term = Terminal()
@@ -13,7 +14,7 @@ class BootScreen(Screen):
         print(term.home + term.clear)
         
         with(term.cbreak(), term.hidden_cursor()):
-            print(term.move_x(5) + "T: 1982.03.22 - 20:13")
+            print(term.move_x(5) + "T: 1984.03.22 - 20:13")
             print(term.move_xy(5, 2) + "rendszer indítása\n")
             time.sleep(1)
             print(term.move_x(5) + "\tRAM\t\tROM\t\tHDD")
@@ -33,4 +34,4 @@ class BootScreen(Screen):
             
             time.sleep(1.8)
         
-        self.manager.transition(None)
+        self.manager.transition(MainScreen)

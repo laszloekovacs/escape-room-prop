@@ -24,7 +24,7 @@ class MainScreen(Screen):
         with term.cbreak(), term.hidden_cursor():
             print(term.home + term.clear)
 
-            image = from_file("hand.jpg")
+            image = from_file("./images/640.png")
             print(image)
             #print(term.move_y(term.height) + "hello")
 

@@ -10,10 +10,14 @@ class StandbyScreen:
 
 
     def render(self):
-        print(term.home + term.clear)
+        print(term.home + term.clear + term.move_y(term.height // 2))
+        print(term.black_on_darkkhaki(term.center('alvó üzemmód, nyomjon meg egy gombot, elvtárs.')))
                
-        term.inkey()
-        pass
+        with(term.cbreak(), term.hidden_cursor()):
+            term.inkey()
+            print("indítás...")
+            
+        
         
         
 

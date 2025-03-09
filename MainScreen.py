@@ -13,7 +13,7 @@ term = Terminal()
 # simulates standby state, ask user to press key for booting
 # extends Screen
 class MainScreen(Screen):
-    options = ["keresés", "jelentések"]
+    options = ["ügynök dokumentumok", "nukleáris arzenál", "keresés", "jelentések"]
     selection = 0
 
     def __init__(self, manager):
@@ -24,7 +24,7 @@ class MainScreen(Screen):
         with term.cbreak(), term.hidden_cursor():
             print(term.home + term.clear)
 
-            image = from_file("./images/640.png")
+            image = from_file("./images/vakond.png")
             print(image)
             #print(term.move_y(term.height) + "hello")
 
@@ -46,11 +46,12 @@ class MainScreen(Screen):
                 elif key.name == "KEY_RIGHT":
                     self.selection = (self.selection + 1) % len(self.options)
 
-                elif key.name == "KEY_ESCAPE":
+                elif key.name == "KEY_F1":
                     print("exiting")
+                    # TODO: fix this abhorent code
                     from StandbyScreen import StandbyScreen
-
                     self.manager.transition(StandbyScreen)
-                    
-        
 
+                elif key.name == "KEY_ENTER":
+                    # go to selected screen
+                    print("action")

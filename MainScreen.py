@@ -2,6 +2,8 @@ from blessed import Terminal
 from Screen import Screen
 from term_image.image import from_file
 
+#import StandbyScreen
+
 # main menu. this should render a logo and a menu to select submenus
 
 
@@ -46,7 +48,9 @@ class MainScreen(Screen):
 
                 elif key.name == "KEY_ESCAPE":
                     print("exiting")
-                    self.manager.transition(None)
+                    from StandbyScreen import StandbyScreen
+
+                    self.manager.transition(StandbyScreen)
                     
         
 

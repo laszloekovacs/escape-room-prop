@@ -20,6 +20,5 @@ class Manager:
         """runs untill current screen is set to None"""
         while self.current_screen:
             self.current_screen.render()
-            # wait a bit just to throttle usage
-            term.inkey(0.1)
-        print("exiting...")
+            
+       

@@ -1,6 +1,8 @@
 import blessed
 import BootScreen
 import Screen
+from term_image.image import from_file
+
 
 term = blessed.Terminal()
 
@@ -12,15 +14,13 @@ class StandbyScreen(Screen.Screen):
 
 
     def render(self):
-        print(term.home + term.clear + term.move_y(term.height // 2))
+        print(term.clear)
+        image = from_file("./images/hns.png")
+        print(image)
+        print(term.home + term.move_y(term.height // 2))
         print(term.gray(term.center('alvó üzemmód, nyomjon meg egy gombot, elvtárs.')))
                
         with(term.cbreak(), term.hidden_cursor()):
             term.inkey()
             print("indítás...")
             self.manager.transition(BootScreen.BootScreen(self.manager))
-            
-        
-        
-        
-

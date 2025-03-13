@@ -28,7 +28,6 @@ class MainScreen(Screen.Screen):
 
             image = from_file("./images/vakond.png")
             print(image)
-            #print(term.move_y(term.height) + "hello")
 
             menuline = ""
 

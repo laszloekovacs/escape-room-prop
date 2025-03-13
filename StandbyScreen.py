@@ -1,12 +1,12 @@
-from blessed import Terminal
-from BootScreen import BootScreen
-from Screen import Screen
+import blessed
+import BootScreen
+import Screen
 
-term = Terminal()
+term = blessed.Terminal()
 
 # simulates standby state, ask user to press key for booting
 # extends Screen
-class StandbyScreen(Screen):
+class StandbyScreen(Screen.Screen):
     def __init__(self, manager):
         super().__init__(manager)
 
@@ -18,7 +18,7 @@ class StandbyScreen(Screen):
         with(term.cbreak(), term.hidden_cursor()):
             term.inkey()
             print("indítás...")
-            self.manager.transition(BootScreen)
+            self.manager.transition(BootScreen.BootScreen(self.manager))
             
         
         

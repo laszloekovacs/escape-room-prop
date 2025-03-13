@@ -1,12 +1,12 @@
-from blessed import Terminal
-from Screen import Screen
-from MainScreen import MainScreen
+import blessed
+import Screen
+import MainScreen
 import time
 
-term = Terminal()
+term = blessed.Terminal()
 
 
-class BootScreen(Screen):
+class BootScreen(Screen.Screen):
     def __init__(self, manager):
         super().__init__(manager)
 
@@ -34,4 +34,4 @@ class BootScreen(Screen):
             
             time.sleep(1.8)
         
-        self.manager.transition(MainScreen)
+        self.manager.transition(MainScreen.MainScreen(self.manager))

@@ -1,6 +1,8 @@
-from blessed import Terminal
-from Screen import Screen
+import blessed
+import Screen
 from term_image.image import from_file
+import StandbyScreen
+import SearchScreen
 
 #import StandbyScreen
 
@@ -8,11 +10,11 @@ from term_image.image import from_file
 
 
 
-term = Terminal()
+term = blessed.Terminal()
 
 # simulates standby state, ask user to press key for booting
 # extends Screen
-class MainScreen(Screen):
+class MainScreen(Screen.Screen):
     options = ["ügynök dokumentumok", "nukleáris arzenál", "keresés", "jelentések"]
     selection = 0
 
@@ -48,10 +50,10 @@ class MainScreen(Screen):
 
                 elif key.name == "KEY_F1":
                     print("exiting")
-                    # TODO: fix this abhorent code
-                    from StandbyScreen import StandbyScreen
-                    self.manager.transition(StandbyScreen)
-
+                    self.manager.transition(StandbyScreen.StandbyScreen(self.manager))
+                  
                 elif key.name == "KEY_ENTER":
                     # go to selected screen
+                    if self.options[self.selection] == "keresés":
+                        self.manager.transition(SearchScreen.SearchScreen(self.manager))
                     print("action")

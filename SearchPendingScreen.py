@@ -1,9 +1,11 @@
+import random
 import Screen
 import blessed
 from term_image.image import from_file
+import time 
+import os
 
 term = blessed.Terminal()
-
 
 class SearchPendingScreen(Screen.Screen):
     def __init__(self, manager, prompt = ""):
@@ -12,14 +14,37 @@ class SearchPendingScreen(Screen.Screen):
         pass
 
     def render(self):
-        print(term.clear + term.home)
-        message = term.move_y(term.height // 2) + term.black_on_darkkhaki(term.center("kereses: " + self.prompt))
+        with term.cbreak(), term.hidden_cursor():
+            start_time = time.time()
 
-        image = from_file("./images/slides/notes.png")
-        image.draw(h_align="center", v_align="middle")
+            blink = True
 
-        print(message)
+            path = "./images/slides/"
+            # read all image names into an array from images/slides
+            dir = os.listdir(path)
 
-        term.inkey()
-        pass
-        
+            # choose a random starting image
+            index = random.randint(0, len(dir) - 1)
+
+            # show the images until 4 seconds pass                
+            while time.time() - start_time < 6:
+                print(term.clear + term.home)
+                
+                image = from_file(path + dir[index])
+                image.draw(h_align="center", v_align="middle")
+                index = (index + 1) % len(dir)
+
+                title = term.bold("kereses folyamatban: " + self.prompt if blink == True else "")
+                message = term.move_y(term.height // 2) + term.black_on_darkkhaki(term.center(title))
+                print(message)
+                
+                blink = not blink
+
+                # wait for x seconds
+                time.sleep(0.6)
+
+            #at the end, go to searchResult screen    
+            
+            pass    
+
+                

@@ -13,7 +13,7 @@ class ForbiddenScreen(Screen.Screen):
     def render(self):
         with term.cbreak(): 
             print(term.home + term.clear),
-            print(term.center("hozzáférés megtagadva"))
+            print(term.move_y(term.height //2) + term.center(term.black_on_darkkhaki("hozzáférés megtagadva")))
             term.inkey()
             self.manager.transition(MainScreen.MainScreen(self.manager))
         

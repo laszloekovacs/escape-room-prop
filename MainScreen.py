@@ -1,4 +1,5 @@
 import blessed
+import NukeScreen
 import Screen
 from term_image.image import from_file
 import StandbyScreen
@@ -53,6 +54,10 @@ class MainScreen(Screen.Screen):
                   
                 elif key.name == "KEY_ENTER":
                     # go to selected screen
-                    if self.options[self.selection] == "keresés":
+                    if self.selection == 2:
                         self.manager.transition(SearchScreen.SearchScreen(self.manager))
+
+                    if self.selection == 1:
+                        self.manager.transition(NukeScreen.NukeScreen(self.manager))
+
                     print("action")

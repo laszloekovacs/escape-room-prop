@@ -18,14 +18,14 @@ class SearchResults(Screen.Screen):
 
 
     def render(self):
-        print(term.home + term.clear + term.move_y(term.height // 2))
+        with term.cbreak():
+            print(term.home + term.clear + term.move_y(term.height // 2))
         
-        if self.query:
             if self.query.lower() == codeA.lower():
                 print(term.center(resultA))
 
-        else:
-            print(term.center("nincs találat"))
+            else:
+                print(term.center("nincs találat"))
 
-        term.inkey()
-        self.manager.transition(MainScreen.MainScreen(self.manager))
+            term.inkey()
+            self.manager.transition(MainScreen.MainScreen(self.manager))

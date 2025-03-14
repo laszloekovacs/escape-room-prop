@@ -5,6 +5,8 @@ from term_image.image import from_file
 import time 
 import os
 
+import SearchResults
+
 term = blessed.Terminal()
 
 class SearchPendingScreen(Screen.Screen):
@@ -44,7 +46,7 @@ class SearchPendingScreen(Screen.Screen):
                 time.sleep(0.6)
 
             #at the end, go to searchResult screen    
-            
+            self.manager.transition(SearchResults.SearchResults(self.manager, self.prompt))
             pass    
 
                 

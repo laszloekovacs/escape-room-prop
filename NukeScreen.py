@@ -14,17 +14,18 @@ class NukeScreen(Screen.Screen):
 
 
     def render(self):
-        print(term.home + term.clear)
+        with term.cbreak():
+            print(term.home + term.clear)
         
-        if self.blink:
-            self.imgA.draw(h_align="center", v_align="middle")        
-        else:
-            self.imgB.draw(h_align="center", v_align="middle")
+            if self.blink:
+                self.imgA.draw(h_align="center", v_align="middle")        
+            else:
+                self.imgB.draw(h_align="center", v_align="middle")
 
-        self.blink = not self.blink
+            self.blink = not self.blink
 
-        print("\nHiba: kártya olvasó nincs csatlakoztatva\nA folytatáshoz helyezze be az indítókártyát\nNyomjon meg bármilyen billentyűt")        
-        prompt = term.inkey(1)
+            print("\nHiba: kártya olvasó nincs csatlakoztatva\nA folytatáshoz helyezze be az indítókártyát\nNyomjon meg bármilyen billentyűt")        
+            prompt = term.inkey(1)
         
-        if prompt :
-            self.manager.transition(MainScreen.MainScreen(self.manager))
+            if prompt :
+                self.manager.transition(MainScreen.MainScreen(self.manager))

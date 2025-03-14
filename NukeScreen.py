@@ -23,7 +23,7 @@ class NukeScreen(Screen.Screen):
 
         self.blink = not self.blink
 
-        print("A folytatáshoz helyezze be az indítókártyát")        
+        print("\nHiba: kártya olvasó nincs csatlakoztatva\nA folytatáshoz helyezze be az indítókártyát\nNyomjon meg bármilyen billentyűt")        
         prompt = term.inkey(1)
         
         if prompt :

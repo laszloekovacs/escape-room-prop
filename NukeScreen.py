@@ -3,6 +3,8 @@ import MainScreen
 import Screen
 from term_image.image import from_file
 
+import StandbyScreen
+
 term = blessed.Terminal()
 
 class NukeScreen(Screen.Screen):
@@ -27,5 +29,8 @@ class NukeScreen(Screen.Screen):
             print("\nHiba: kártya olvasó nincs csatlakoztatva\nA folytatáshoz helyezze be az indítókártyát\nNyomjon meg bármilyen billentyűt")        
             prompt = term.inkey(1)
         
-            if prompt :
-                self.manager.transition(MainScreen.MainScreen(self.manager))
+            if prompt:
+                if prompt == "0":
+                    self.manager.transition(StandbyScreen.StandbyScreen(self.manager))
+                else:
+                    self.manager.transition(MainScreen.MainScreen(self.manager))

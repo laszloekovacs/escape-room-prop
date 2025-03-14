@@ -56,14 +56,14 @@ class MainScreen(Screen.Screen):
                 elif key.name == "KEY_ENTER":
                     if self.selection == 0:
                         self.manager.transition(ForbiddenScreen.ForbiddenScreen(self.manager))
-                    
-                    # go to selected screen
+                                        
                     if self.selection == 1:
                         self.manager.transition(NukeScreen.NukeScreen(self.manager))
 
                     if self.selection == 2:
                         self.manager.transition(SearchScreen.SearchScreen(self.manager))
-
                     
+                    if self.selection == 3:
+                        self.manager.transition(ForbiddenScreen.ForbiddenScreen(self.manager))                 
 
                     print("action")

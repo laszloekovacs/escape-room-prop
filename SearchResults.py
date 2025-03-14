@@ -4,8 +4,12 @@ import Screen
 from term_image.image import from_file
 
 
-codeA = "Tell me why"
-resultA = "5435"
+codes = {
+    "tell me why": "5435",
+    "egy amerikai párizsban": "32",
+    "durch berlin": "23",
+    "katyusa": "2",
+}
 
 
 
@@ -16,13 +20,13 @@ class SearchResults(Screen.Screen):
         super().__init__(manager)
         self.query = query
 
-
     def render(self):
         with term.cbreak():
             print(term.home + term.clear + term.move_y(term.height // 2))
-        
-            if self.query.lower() == codeA.lower():
-                print(term.center(resultA))
+            
+            #if prompt is in the keys
+            if self.query.lower() in codes:
+                print(term.move_y(term.height // 2) + term.center(codes[self.query.lower()]))
 
             else:
                 print(term.center("nincs találat"))

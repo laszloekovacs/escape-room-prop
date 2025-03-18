@@ -5,12 +5,11 @@ from term_image.image import from_file
 
 
 codes = {
-    "tell me why": "5435",
-    "egy amerikai párizsban": "32",
-    "durch berlin": "23",
-    "katyusa": "2",
+    "tell me why": "sikeres találat: 42",
+    "egy amerikai párizsban": "sikeres találat: 42",
+    "durch berlin": "sikeres találat: 42",
+    "katyusa": "sikeres találat: 42",
 }
-
 
 
 term = blessed.Terminal()

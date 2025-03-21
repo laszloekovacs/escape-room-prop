@@ -9,7 +9,8 @@ codes = {
     "egy amerikai párizsban": "sikeres találat: 42",
     "durch berlin": "sikeres találat: 42",
     "katyusa": "sikeres találat: 42",
-    "vltava": "sikeres találat: 42"
+    "vltava": "sikeres találat: 42",
+    "vivace": "sikeres találat: 42"
 }
 
 
